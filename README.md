@@ -33,7 +33,7 @@ Every single class MUST follow the [single responsibility principal](http://www.
 
 If a package contains a base accessor object, this object MUST follow the factory pattern and should be written as dynamically as possible.
 
-For example, when working with the database package, even though we have a factory object that will call the requested driver, the call for each driver MUST NOT be hardcoded into the factory object. This way we are not adding any unnecessary dependencies. The factory will not know about the drivers, and vice versa.
+For example, when working with the database package, even though we have a factory object that will call the requested driver, the instantion of a driver MUST NOT be hardcoded into the factory object. This way we are not adding any unnecessary dependencies. The factory will not know about the drivers, and vice versa.
 
 This is how it will work:  
 The name of the class and file are identical, so instead of hardcoding the objects into the factory we can use realpath() to check if a file with the requested driver name exists.
