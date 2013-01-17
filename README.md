@@ -91,7 +91,7 @@ Some suggestions for classes is:
   * Table - Handles anything related to a database table
   * Schema - Handles anything related to the database schema
   * QueryBuilder - Help create good queries
-  * Mptt - Class to handle the [[http://www.sitepoint.com/hierarchical-data-database-2/|Modified Preordered Tree Traversal]] design
+  * Mptt - Class to handle the [Modified Preordered Tree Traversal](http://www.sitepoint.com/hierarchical-data-database-2/) design
   * Drivers (e.g: MySQL and SQLite)
 
 **Html**
