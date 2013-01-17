@@ -29,7 +29,7 @@ The CL will follow PSR-0, PSR-1 and PSR-2, but will not include PSR-3 since this
 
 All packages MUST be written with proper corresponding unit tests to provide proof that the package is robust.
 
-Every single class MUST follow the [[http://www.oodesign.com/single-responsibility-principle.html|single responsibility principal]]
+Every single class MUST follow the [single responsibility principal](http://www.oodesign.com/single-responsibility-principle.html)
 
 If a package contains a base accessor object, this object MUST follow the factory pattern and should be written as dynamically as possible.
 
@@ -75,7 +75,7 @@ Package Details
 
 **Database**
 
-A layer that easily helps you connect to a supported driver. It should have a singleton base class (e.g. Database) which follows the [[http://www.oodesign.com/factory-method-pattern.html|factory method pattern.]]
+A layer that easily helps you connect to a supported driver. It should have a singleton base class (e.g. Database) which follows the [factory method pattern.](http://www.oodesign.com/factory-method-pattern.html)
 
 The call for a driver MUST NOT be hardcoded into the factory object. This way we are not adding any unnecessary dependencies. The factory will not know about the drivers, and vice versa.
 
