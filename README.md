@@ -23,7 +23,7 @@ Description
 The goal for Edify is to build a component library based on standalone packages that has no dependencies outside the package itself. The idea is to remove the rules and restrictions that all frameworks and most libraries today are forcing the developer to follow. The developer can grab only the packages that is needed for the current project and ignore everything else.
 
 Standards & Requirements
-------
+-----
 
 The CL will follow PSR-0, PSR-1 and PSR-2, but will not include PSR-3 since this imposes unnecessary dependencies.
 
