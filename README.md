@@ -31,6 +31,8 @@ Standards & Requirements
 
 Edify will follow PSR-0, PSR-1 and PSR-2, but will not include PSR-3 since this imposes unnecessary dependencies.
 
+All packages MUST be shipped with a properly formatted README.md in the package root that provides; detailed description and usage description and code examples.
+
 All packages MUST be written with proper corresponding unit tests using PHPUnit to provide proof that the package is robust. This might be "scary" to some, especially to new programmers, but don't let this stop you. Remember, the main goal of the project is to educate. Don't be afraid to ask for help.
 
 Every single class MUST follow the [single responsibility principal](http://www.oodesign.com/single-responsibility-principle.html)
