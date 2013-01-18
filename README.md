@@ -15,7 +15,11 @@ educate
 Introduction
 -----
 
-Edify is an educational project for the PHP Programmers community. The idea is learning by doing. This project is ment to be educational only, and does not have any intentions of being a competitor to any other existing framework or library.
+Edify is an educational project created by the PHP Programmers community, but is not limited to only its members. Anyone are free to contribute in any way. The idea is learning by doing. This project is ment to be for educational purposes only, and does not have any intentions of being a competitor to any other existing framework or library.
+
+We hope that this project can help bringing the community even closer together through collaboration. Who knows. Maybe we even see people directly collaborating on packages and new friendships being formed? That would be awsome :)
+
+The project is still in an early planning phase, so contributions to this process, such as package ideas, improvements to the readme, etc, is greatly appreciated, but pull requests containing packages will not be accepted at this point. A few packages will be made by the core development team first. This way we ensure that people fully understand the structure of the project, and you won't have to keep refactoring your code.
 
 Description
 -----
@@ -25,9 +29,9 @@ The goal for Edify is to build a component library based on standalone packages 
 Standards & Requirements
 -----
 
-The CL will follow PSR-0, PSR-1 and PSR-2, but will not include PSR-3 since this imposes unnecessary dependencies.
+Edify will follow PSR-0, PSR-1 and PSR-2, but will not include PSR-3 since this imposes unnecessary dependencies.
 
-All packages MUST be written with proper corresponding unit tests to provide proof that the package is robust.
+All packages MUST be written with proper corresponding unit tests using PHPUnit to provide proof that the package is robust. This might be "scary" to some, especially to new programmers, but don't let this stop you. Remember, the main goal of the project is to educate. Don't be afraid to ask for help.
 
 Every single class MUST follow the [single responsibility principal](http://www.oodesign.com/single-responsibility-principle.html)
 
@@ -36,7 +40,7 @@ If a package contains a base accessor object, this object MUST follow the factor
 For example, when working with the database package, even though we have a factory object that will call the requested driver, the instantion of a driver MUST NOT be hardcoded into the factory object. This way we are not adding any unnecessary dependencies. The factory will not know about the drivers, and vice versa.
 
 This is how it will work:  
-The name of the class and file are identical, so instead of hardcoding the objects into the factory we can use realpath() to check if a file with the requested driver name exists.
+The name of the class and file are identical, so instead of hardcoding the objects into the factory we can check if a file with the requested driver name exists.
 
 Here’s a sample code of how I have solved this previously
 
@@ -52,14 +56,14 @@ $driver = new $driver($config);
 
 Container packages MUST NOT depend on any of its sub package.
 
-All dependencies MUST be included using the //use// operated right below the namespace.
+All dependencies MUST be included using the use operated right below the namespace.
 
 All classes, methods, constants and properties MUST be well documented. This includes DocBlock tags for all parameters, returns, use operators, throwing exceptions, and so on.
 
 Packages
 ------
 
-This is listed of packages that should be present in the library. Please see the "Package Details" for more information
+This is a list of packages that should be present in the library. Please see the "Package Details" for more information
 
   * Database
   * Html
@@ -108,7 +112,7 @@ Command line interface objects. These objects should never be used for anything 
 
 **Files**
 
-This is another container package. Here we will have a class in the Files package root that contains common actions like; rename, move, copy and delete. There will also be a separate class for uploading files. Some sub packages will be Images, PDF, etc.
+This is another container package. Here we will have at least one class in the Files package root that contains common actions like; rename, move, copy and delete. There will also be a separate class for uploading files. Some sub packages will be Images, PDF, etc.
 
 **Utils**
 
@@ -116,11 +120,11 @@ The Utils package will contain helper classes like; validation, string manipulat
 
 **Security**
 
-This package will contain Acl, 
+This package will contain Acl, etc
 
 **WebServices**
 
-Helpero bjects against web service APIs such as; Facebook, Foursquare, Google, Tumblr, Twitter and Yahoo.
+Helper objects towards web service APIs such as; Facebook, Foursquare, Google, Tumblr, Twitter and Yahoo.
 
 **Payment**
 
