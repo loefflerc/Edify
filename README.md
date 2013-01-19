@@ -19,6 +19,9 @@ Edify is an educational project created by the PHP Programmers community, but is
 
 We hope that this project can help bringing the community even closer together through collaboration. Who knows. Maybe we even see people directly collaborating on packages and new friendships being formed? That would be awsome :)
 
+Contributions
+======
+
 The project is still in an early planning phase, so contributions to this process, such as package ideas, improvements to the readme, etc, is greatly appreciated, but pull requests containing packages will not be accepted at this point. A few packages will be made by the core development team first. This way we ensure that people fully understand the structure of the project, and you won't have to keep refactoring your code.
 
 Description
