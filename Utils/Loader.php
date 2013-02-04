@@ -6,10 +6,6 @@
 
 namespace Edify\Utils;
 
-
-// side effect: loads  the Utils/Log class as it is needed between 
-require_once PP_NET_CL_PATH . "/Utils/Log.php";
-
 /** Define the Loader class that allows autoloading of classes with out have to
  * include each and every class on every script.
  * 
@@ -38,12 +34,12 @@ class Loader {
      * 
      * @author IrishAdo <irishado@php-programmers.net>
      */
-    public static function init($basePath) {
+    public static function init() {
         if (self::$instance == NULL) {
             self::$instance = new self();
         }
         
-        self::registerVendor('Edify', $basePath);
+        self::registerVendor('Edify', dirname(dirname(__FILE__)));
         return self::$instance;
     }
 
@@ -61,7 +57,6 @@ class Loader {
      * @param Class name 
      */
     public function auto($class) {
-        \Edify\Utils\Log::debugLog("[Edify\Utils\Loader]", "class name = $class");
         // split the namespace and class up into parts
         $parts = explode("\\", $class);
 
@@ -75,7 +70,7 @@ class Loader {
 
         // if we have not listed the path for that vendor then we don't know where it is so die.
         if (!isset(self::$vendors[$choosenVendor])) {
-            \Edify\Utils\Log::debugError("[Edify\Utils\Loader]", "Vendor $choosenVendor not found use \Edify\Utils\Loader::AddVendorPath(\$vendor,\$path);");
+            error_log("[Edify\Utils\Loader] Vendor $choosenVendor not found use \Edify\Utils\Loader::AddVendorPath(\$vendor,\$path);");
             throw new \Exception('Sorry we could not find a class located at '. $checkPathforFile);
         } else {
 
@@ -84,10 +79,9 @@ class Loader {
 
             // if the file does exist then include it or die.
             if (file_exists($checkPathforFile)) {
-                \Edify\Utils\Log::debugLog("[Edify\Utils\Loader]", "Found -> $checkPathforFile");
                 require_once($checkPathforFile);
             } else {
-                \Edify\Utils\Log::debugError("[Edify\Utils\Loader]", "Found -> $checkPathforFile");
+                error_log("[Edify\Utils\Loader] We could not find the following file in the specified vendor -> $checkPathforFile");
                 throw new \Exception('Sorry we could not find a class located at  '. $checkPathforFile);
             }
         }
@@ -113,5 +107,5 @@ class Loader {
 
 }
 
-\Edify\Utils\Loader::init(PP_NET_CL_PATH);
+\Edify\Utils\Loader::init();
 ?>
