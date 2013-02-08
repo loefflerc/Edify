@@ -5,6 +5,7 @@
  */
 
 namespace Edify\Utils;
+use Exception;
 
 /** Define the Loader class that allows autoloading of classes with out have to
  * include each and every class on every script.
@@ -71,7 +72,7 @@ class Loader {
         // if we have not listed the path for that vendor then we don't know where it is so die.
         if (!isset(self::$vendors[$choosenVendor])) {
             error_log("[Edify\Utils\Loader] Vendor $choosenVendor not found use \Edify\Utils\Loader::AddVendorPath(\$vendor,\$path);");
-            throw new \Exception('Sorry we could not find a class located at '. $checkPathforFile);
+            throw new Exception('Sorry we could not find a class located at '. $checkPathforFile);
         } else {
 
             // work out the path to look for the file based on the Vendors path.
@@ -82,7 +83,7 @@ class Loader {
                 require_once($checkPathforFile);
             } else {
                 error_log("[Edify\Utils\Loader] We could not find the following file in the specified vendor -> $checkPathforFile");
-                throw new \Exception('Sorry we could not find a class located at  '. $checkPathforFile);
+                throw new Exception('Sorry we could not find a class located at  '. $checkPathforFile);
             }
         }
     }

@@ -1,7 +1,7 @@
 <?php
 
 namespace Edify\Database;
-
+use PDO;
 /**
  *
  * @licence http://php-programmers/licences/Freetard FreeTard licence
@@ -11,15 +11,15 @@ class Server {
 
     CONST MYSQL = "Edify\Database\Drivers\Mysql";
     CONST MSSQL = "Edify\Database\Drivers\Mssql";
-    CONST DBTYPE_TINYINT = 0;
-    CONST DBTYPE_SMALLINT = 1;
-    CONST DBTYPE_INT = 2;
-    CONST DBTYPE_BIGINT = 3;
-    CONST DBTYPE_VARCHAR = 4;
-    CONST DBTYPE_CHAR = 5;
-    CONST DBTYPE_DATETIME = 6;
-    CONST DBTYPE_DECIMAL = 7;
-    CONST DBTYPE_TEXT = 8;
+    CONST DBTYPE_TINYINT   = 0;
+    CONST DBTYPE_SMALLINT  = 1;
+    CONST DBTYPE_INT       = 2;
+    CONST DBTYPE_BIGINT    = 3;
+    CONST DBTYPE_VARCHAR   = 4;
+    CONST DBTYPE_CHAR      = 5;
+    CONST DBTYPE_DATETIME  = 6;
+    CONST DBTYPE_DECIMAL   = 7;
+    CONST DBTYPE_TEXT      = 8;
     CONST DBTYPE_SMALLTEXT = 9;
 
     private $driver = null;
@@ -45,9 +45,9 @@ class Server {
      * @throws PDOException if the system does not have the correct driver installed
      */
     function checkForDriver($driverName) {
-        if (!in_array($driverName, \PDO::getAvailableDrivers())) {
+        if (!in_array($driverName, PDO::getAvailableDrivers())) {
             \Edify\Utils\Log::debugLog("[Edify\Database\Server]", "Driver " . $driverName . " was not found to be installed PDO::getAvailableDrivers()");
-            throw new \PDOException("The specified driver is not available");
+            throw new PDOException("The specified driver is not available");
             /// not sure if this would ever get executed but my OCD wants it in.
             return false;
         }
@@ -105,7 +105,7 @@ class Server {
     function getTypeConstant($type) {
         switch (strtolower($type)) {
             case "bigint" :
-                $returnType = \Edify\Database\Server::DBTYPE_BIGINT;
+                $returnType = DBTYPE_BIGINT;
                 break;
             case "int" :
                 $returnType = \Edify\Database\Server::DBTYPE_INT;
