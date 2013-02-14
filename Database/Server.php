@@ -76,6 +76,19 @@ class Server {
     }
 
     /**
+     * prepare a SQL statement
+     */
+    function prepare($sql) {
+        return $this->driver->prepare($sql);
+    }
+    /**
+     *
+     */
+    function execute($parameters = Array()) {
+        return $this->driver->execute($parameters);
+    }
+
+    /**
      * convert the string from the show columns functions type column to a
      * \Edify\Database\Server::DBTYPE_* constant.
      *

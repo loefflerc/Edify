@@ -90,6 +90,16 @@ class Mysql {
         return self::DRIVER_TYPE;
     }
 
+    function prepare($sql){
+        return $this->connection->prepare($sql);
+    }
+    function execute($parameters=Array()){
+        if(count($parameters)==0){
+           return $this->connection->execute();
+
+        }
+        return $this->connection->execute($parameters);
+    }
     
 }
 
