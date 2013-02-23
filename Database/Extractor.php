@@ -34,7 +34,7 @@ class Extractor {
     /**
      * Run the extractor against the supplied database connection
      */
-    function run() {
+    function run(){
         $tableData = $this->pdoObject->getSchema();
 
         foreach ($tableData as $table => $tableDefinition) {
@@ -89,7 +89,7 @@ class Extractor {
         foreach ($tables as $table => $properties) {
             $class = $properties["fixedTableName"];
             $buffer = "<?php
-namespace " . $this->destinationNameSpace . $properties["schema_name"] . "
+namespace " . $this->destinationNameSpace . $properties["schema_name"] . ";
 /**
   * $class implements a Database Model Object
   *
@@ -116,7 +116,7 @@ class $class extends \Edify\Database\Model {
             $filename = $this->destinationPath . "/" . $properties["schema_name"] . "/" . $class . ".php";
 
             \Edify\Utils\Log::debugLog("[Edify\Database\Extractor]", "Saving class $class to $filename");
-            if (!@mkdir(dirname($filename), 0770, true)) {
+            if (!mkdir(dirname($filename), 0770, true)) {
                 \Edify\Utils\Log::debugLog("[Edify\Database\Extractor]", "Failed to create directory " . dirname($filename));
             }
 

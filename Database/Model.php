@@ -88,7 +88,7 @@ class Model {
 	public function getPrimaryKeyValue() {
 		// if no primary key then always do an insert.
 		if ($this->primaryKey == "" || is_null($this->primaryKey) || ($this->properties[$this->primaryKey] == self::__UNDEFINED__)) {
-			return -1; // represents a || isnull($t insert
+			return -1; // represents a insert
 		}
 		return $this->properties[$this->primaryKey];
 	}

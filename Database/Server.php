@@ -65,7 +65,7 @@ class Server {
      */
     function getConnection($database, $host, $username, $password) {
         \Edify\Utils\Log::debugLog("[Edify\Database\Server]", "Attempting to connect to a database using driver " . $this->driver->getType());
-        return $this->driver->getConnection($database, $host, $username, $password);
+        $this->driver->getConnection($database, $host, $username, $password);
     }
 
     /**
@@ -118,7 +118,7 @@ class Server {
     function getTypeConstant($type) {
         switch (strtolower($type)) {
             case "bigint" :
-                $returnType = DBTYPE_BIGINT;
+                $returnType = \Edify\Database\Server::DBTYPE_BIGINT;
                 break;
             case "int" :
                 $returnType = \Edify\Database\Server::DBTYPE_INT;
@@ -150,6 +150,9 @@ class Server {
         return $returnType;
     }
 
+    function getLockStatement(){
+        return $this->driver->getLockStatement();
+    }
 }
 
 ?>

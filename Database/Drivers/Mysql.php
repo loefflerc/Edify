@@ -17,11 +17,11 @@ class Mysql {
     CONST DRIVER_TYPE = "mysql";
 
     function __construct($parent) {
-        $parentObject = $parent;
+        $this->parentObject = $parent;
 
         // check if the driver we are using has been configured in the php
         //configuration
-        $parentObject->checkForDriver($this->getType());
+        $this->parentObject->checkForDriver($this->getType());
     }
 
     /**
@@ -89,10 +89,20 @@ class Mysql {
     function getType() {
         return self::DRIVER_TYPE;
     }
-
+    /**
+     * prepare a SQL statement for execution
+     * @param type $sql
+     * @return PDOStatement
+     */
     function prepare($sql){
         return $this->connection->prepare($sql);
     }
+
+    /**
+     *
+     * @param type $parameters
+     * @return type
+     */
     function execute($parameters=Array()){
         if(count($parameters)==0){
            return $this->connection->execute();
@@ -100,7 +110,8 @@ class Mysql {
         }
         return $this->connection->execute($parameters);
     }
-    
+
+    function getLockStatement(){return "";}
 }
 
 ?>
