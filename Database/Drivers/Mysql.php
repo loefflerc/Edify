@@ -112,6 +112,7 @@ class Mysql {
     }
 
     function getLockStatement(){return "";}
+    function getInsertIdStatement(){return "\nSELECT LAST_INSERT_ID() as scope_identifier";}
 }
 
 ?>
