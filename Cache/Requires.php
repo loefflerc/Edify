@@ -3,13 +3,14 @@
 namespace Edify\Cache;
 
 /**
- * The Statics driver will return a list of cached buffers if the files are in
- * the statics cache directory.
+ * The Requires driver extends the same functionality as the STATICS class it
+ * will only overwrite the load function as it will require the file instead of
+ * putting it in a buffer.
  *
  * @licence FreeTard
  * @author IrishAdo <irishado@php-programmers.net>
  */
-class Statics {
+class Requires {
 
     private $parentFactory = null;
 
@@ -42,20 +43,15 @@ class Statics {
      * @param Array The List of Parameters
      */
     function load($parameters) {
-        if (!isset($parameters["list"])){
-            throw new \InvalidArgumentException("Invalid parameters list incorrect format");
+        if (!isset($parameters["url"])) {
+            throw new \InvalidArgumentException("Invalid parameters url incorrect format");
         }
-        $listOfStaticWidgets = $parameters["list"];
-        $listOfBuffers = Array();
-        foreach ($listOfStaticWidgets as $keyPath) {
-            $url = $this->parentFactory->getFileName("statics", $keyPath);
-            if (!file_exists($url)){
-                $listOfBuffers[$keyPath] = null;
-            } else {
-                $listOfBuffers[$keyPath] = $this->parentFactory->loadFile($url);
-            }
+        $url = $this->parentFactory->getFileName("Requires", $parameters["url"]);
+        if (!file_exists($url)) {
+            return false;
         }
-        return $listOfBuffers;
+        require($url);
+        return $object;
     }
 
     /** save a block of static content to the cache.
@@ -72,11 +68,9 @@ class Statics {
         if (!isset($parameters["buffer"]) || !is_string($parameters["buffer"])){
             throw new \InvalidArgumentException("Invalid parameters buffer incorrect format");
         }
-        $url = $parameters["url"];
-        $buffer = $parameters["buffer"];
-        $this->parentFactory->saveFile($this->parentFactory->getFileName(__CLASS__, $url), $buffer);
+        $url = $this->parentFactory->getFileName("Requires", $parameters["url"]);
+        $this->parentFactory->saveFile($url, $parameters["buffer"]);
     }
-
 }
 
 ?>

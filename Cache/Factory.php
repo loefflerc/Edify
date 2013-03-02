@@ -31,6 +31,10 @@ class Factory {
      * define the constant STATICS so that Intellisense will pick up the string.
      */
     Const STATICS = "\\Edify\\Cache\\Statics";
+    /**
+     * define the constant Requires so that Intellisense will pick up the string.
+     */
+    Const REQUIRES = "\\Edify\\Cache\\Requires";
     
     private $driver = null;
     private $language = 'EN';
@@ -55,8 +59,8 @@ class Factory {
         // we dont need to check if the file exists as the Utils Loader will do
         // that for us.  If you dont use the Utils::Loader class then you will
         // have to include the class files yoru self
-        $this->driver = new $driver($this);
-        $this->path = $cachePath;
+        $this->driver   = new $driver($this);
+        $this->path     = $cachePath;
         $this->language = $cachingLanguage;
     }
     
@@ -103,6 +107,8 @@ class Factory {
      */
 
     public function saveFile($path, $buffer) {
+        $directoryPath = dirname($path);
+        @mkdir($directoryPath,0775,true);
         $filePointer = fopen($path, "w");
         fwrite($filePointer, $buffer);
         fclose($filePointer);
@@ -118,7 +124,7 @@ class Factory {
      * @return String representing the full real path to the file.
      */
     public function getFileName($type, $UniqueFileId) {
-        return realpath($this->path) . "/$type/" . $UniqueFileId . "." . $this->language;
+        return $this->path . "/$type/" . $UniqueFileId . "." . $this->language;
     }
 
 }
