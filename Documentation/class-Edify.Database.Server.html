@@ -7,7 +7,7 @@
 	<title>Class Edify\Database\Server | Edify</title>
 
 	<script type="text/javascript" src="resources/combined.js?2021650611"></script>
-	<script type="text/javascript" src="elementlist.js?2183828106"></script>
+	<script type="text/javascript" src="elementlist.js?3539360223"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,6 +46,7 @@
 			<ul>
 				<li><a href="class-Edify.Database.Extractor.html">Extractor</a></li>
 				<li><a href="class-Edify.Database.Model.html">Model</a></li>
+				<li><a href="class-Edify.Database.Record.html">Record</a></li>
 				<li class="active"><a href="class-Edify.Database.Server.html">Server</a></li>
 			</ul>
 
@@ -117,7 +118,7 @@ href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programme
 				<a
 href="http://php-programmers/licences/Freetard">http://php-programmers/licences/Freetard</a>
 FreeTard licence<br />
-		<b>Located at</b> <a href="source-class-Edify.Database.Server.html#5-140" title="Go to source code">Database/Server.php</a><br />
+		<b>Located at</b> <a href="source-class-Edify.Database.Server.html#5-160" title="Go to source code">Database/Server.php</a><br />
 	</div>
 
 
@@ -135,7 +136,7 @@ FreeTard licence<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#27-37" title="Go to source code">__construct</a>( <span>string <var>$driver</var></span> )</code>
+		<code><a href="source-class-Edify.Database.Server.html#28-38" title="Go to source code">__construct</a>( <span>string <var>$driver</var></span> )</code>
 
 		<div class="description short">
 			
@@ -179,7 +180,7 @@ database. The Driver will check that the desired driver is installed.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_checkForDriver">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#39-55" title="Go to source code">checkForDriver</a>( <span>String <var>$driverName</var></span> )</code>
+		<code><a href="source-class-Edify.Database.Server.html#40-56" title="Go to source code">checkForDriver</a>( <span>String <var>$driverName</var></span> )</code>
 
 		<div class="description short">
 			
@@ -227,7 +228,7 @@ driver is not installed otherwise it return TRUE;</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getConnection">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#57-69" title="Go to source code">getConnection</a>( <span>type <var>$database</var></span>, <span>type <var>$host</var></span>, <span>type <var>$username</var></span>, <span>type <var>$password</var></span> )</code>
+		<code><a href="source-class-Edify.Database.Server.html#58-70" title="Go to source code">getConnection</a>( <span>type <var>$database</var></span>, <span>type <var>$host</var></span>, <span>type <var>$username</var></span>, <span>type <var>$password</var></span> )</code>
 
 		<div class="description short">
 			
@@ -275,7 +276,7 @@ driver is not installed otherwise it return TRUE;</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getSchema">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#71-76" title="Go to source code">getSchema</a>( )</code>
+		<code><a href="source-class-Edify.Database.Server.html#72-77" title="Go to source code">getSchema</a>( )</code>
 
 		<div class="description short">
 			
@@ -297,6 +298,97 @@ driver is not installed otherwise it return TRUE;</p>
 		</div>
 		</div></td>
 	</tr>
+	<tr data-order="prepare" id="_prepare">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_prepare">#</a>
+		<code><a href="source-class-Edify.Database.Server.html#79-84" title="Go to source code">prepare</a>( <span>mixed <var>$sql</var></span> )</code>
+
+		<div class="description short">
+			
+<p>prepare a SQL statement</p>
+
+		</div>
+
+		<div class="description detailed hidden">
+			
+<p>prepare a SQL statement</p>
+
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="execute" id="_execute">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_execute">#</a>
+		<code><a href="source-class-Edify.Database.Server.html#85-90" title="Go to source code">execute</a>( <span>mixed <var>$parameters</var> = <span class="php-keyword1">Array</span>()</span> )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getInsertId" id="_getInsertId">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getInsertId">#</a>
+		<code><a href="source-class-Edify.Database.Server.html#91-93" title="Go to source code">getInsertId</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
 	<tr data-order="examineColumnType" id="_examineColumnType">
 
 		<td class="attributes"><code>
@@ -308,7 +400,7 @@ driver is not installed otherwise it return TRUE;</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_examineColumnType">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#78-97" title="Go to source code">examineColumnType</a>( <span>String <var>$columnType</var></span> )</code>
+		<code><a href="source-class-Edify.Database.Server.html#95-114" title="Go to source code">examineColumnType</a>( <span>String <var>$columnType</var></span> )</code>
 
 		<div class="description short">
 			
@@ -352,7 +444,7 @@ driver is not installed otherwise it return TRUE;</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getTypeConstant">#</a>
-		<code><a href="source-class-Edify.Database.Server.html#99-138" title="Go to source code">getTypeConstant</a>( <span>type <var>$type</var></span> )</code>
+		<code><a href="source-class-Edify.Database.Server.html#116-155" title="Go to source code">getTypeConstant</a>( <span>type <var>$type</var></span> )</code>
 
 		<div class="description short">
 			
@@ -376,6 +468,35 @@ driver is not installed otherwise it return TRUE;</p>
 				<div class="list">
 					<code>Mixed</code><br>return the constant that represents the database column type.<br />
 				</div>
+
+
+
+
+		</div>
+		</div></td>
+	</tr>
+	<tr data-order="getLockStatement" id="_getLockStatement">
+
+		<td class="attributes"><code>
+			 public 
+			
+			
+			</code>
+		</td>
+
+		<td class="name"><div>
+		<a class="anchor" href="#_getLockStatement">#</a>
+		<code><a href="source-class-Edify.Database.Server.html#157-159" title="Go to source code">getLockStatement</a>( )</code>
+
+		<div class="description short">
+			
+		</div>
+
+		<div class="description detailed hidden">
+			
+
+
+
 
 
 
@@ -634,6 +755,26 @@ driver is not installed otherwise it return TRUE;</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="DATETIME_SAVEFORMAT" id="DATETIME_SAVEFORMAT">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Edify.Database.Server.html#24" title="Go to source code"><b>DATETIME_SAVEFORMAT</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">&quot;Y-m-d H:i:s&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#DATETIME_SAVEFORMAT" class="anchor">#</a>
+
+			<div class="description short">
+				
+			</div>
+
+			<div class="description detailed hidden">
+				
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 
@@ -648,7 +789,7 @@ driver is not installed otherwise it return TRUE;</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Edify.Database.Server.html#25" title="Go to source code"><var>$driver</var></a>
+				<a href="source-class-Edify.Database.Server.html#26" title="Go to source code"><var>$driver</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">null</span></code></td>
 		<td class="description"><div>

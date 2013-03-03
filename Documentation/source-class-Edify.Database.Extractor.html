@@ -8,7 +8,7 @@
 	<title>File Database/Extractor.php | Edify</title>
 
 	<script type="text/javascript" src="resources/combined.js?2021650611"></script>
-	<script type="text/javascript" src="elementlist.js?2183828106"></script>
+	<script type="text/javascript" src="elementlist.js?3539360223"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -47,6 +47,7 @@
 			<ul>
 				<li class="active"><a href="class-Edify.Database.Extractor.html">Extractor</a></li>
 				<li><a href="class-Edify.Database.Model.html">Model</a></li>
+				<li><a href="class-Edify.Database.Record.html">Record</a></li>
 				<li><a href="class-Edify.Database.Server.html">Server</a></li>
 			</ul>
 
@@ -129,7 +130,7 @@
 </span><span id="34" class="l"><a class="l" href="#34"> 34: </a>    <span class="php-comment">/**
 </span></span><span id="35" class="l"><a class="l" href="#35"> 35: </a><span class="php-comment">     * Run the extractor against the supplied database connection
 </span></span><span id="36" class="l"><a class="l" href="#36"> 36: </a><span class="php-comment">     */</span>
-</span><span id="37" class="l"><a class="l" href="#37"> 37: </a>    <span class="php-keyword1">function</span> <a id="_run" href="#_run">run</a>() {
+</span><span id="37" class="l"><a class="l" href="#37"> 37: </a>    <span class="php-keyword1">function</span> <a id="_run" href="#_run">run</a>(){
 </span><span id="38" class="l"><a class="l" href="#38"> 38: </a>        <span class="php-var">$tableData</span> = <span class="php-var">$this</span>-&gt;pdoObject-&gt;getSchema();
 </span><span id="39" class="l"><a class="l" href="#39"> 39: </a>
 </span><span id="40" class="l"><a class="l" href="#40"> 40: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$tableData</span> <span class="php-keyword1">as</span> <span class="php-var">$table</span> =&gt; <span class="php-var">$tableDefinition</span>) {
@@ -184,7 +185,7 @@
 </span><span id="89" class="l"><a class="l" href="#89"> 89: </a>        <span class="php-keyword1">foreach</span> (<span class="php-var">$tables</span> <span class="php-keyword1">as</span> <span class="php-var">$table</span> =&gt; <span class="php-var">$properties</span>) {
 </span><span id="90" class="l"><a class="l" href="#90"> 90: </a>            <span class="php-var">$class</span> = <span class="php-var">$properties</span>[<span class="php-quote">&quot;fixedTableName&quot;</span>];
 </span><span id="91" class="l"><a class="l" href="#91"> 91: </a>            <span class="php-var">$buffer</span> = <span class="php-quote">&quot;&lt;?php
-</span></span><span id="92" class="l"><a class="l" href="#92"> 92: </a><span class="php-quote">namespace &quot;</span> . <span class="php-var">$this</span>-&gt;destinationNameSpace . <span class="php-var">$properties</span>[<span class="php-quote">&quot;schema_name&quot;</span>] . <span class="php-quote">&quot;
+</span></span><span id="92" class="l"><a class="l" href="#92"> 92: </a><span class="php-quote">namespace &quot;</span> . <span class="php-var">$this</span>-&gt;destinationNameSpace . <span class="php-var">$properties</span>[<span class="php-quote">&quot;schema_name&quot;</span>] . <span class="php-quote">&quot;;
 </span></span><span id="93" class="l"><a class="l" href="#93"> 93: </a><span class="php-quote">/**
 </span></span><span id="94" class="l"><a class="l" href="#94"> 94: </a><span class="php-quote">  * </span><span class="php-var">$class</span><span class="php-quote"> implements a Database Model Object
 </span></span><span id="95" class="l"><a class="l" href="#95"> 95: </a><span class="php-quote">  *
@@ -198,7 +199,7 @@
 </span></span><span id="103" class="l"><a class="l" href="#103">103: </a><span class="php-quote">    var \</span><span class="php-var">$properties</span><span class="php-quote">   = Array(\n\t\t&quot;</span>;
 </span><span id="104" class="l"><a class="l" href="#104">104: </a>            <span class="php-var">$max</span> = <span class="php-keyword2">count</span>(<span class="php-var">$properties</span>[<span class="php-quote">&quot;columns&quot;</span>]) - <span class="php-num">1</span>;
 </span><span id="105" class="l"><a class="l" href="#105">105: </a>            <span class="php-keyword1">foreach</span> (<span class="php-var">$properties</span>[<span class="php-quote">&quot;columns&quot;</span>] <span class="php-keyword1">as</span> <span class="php-var">$index</span> =&gt; <span class="php-var">$columnData</span>) {
-</span><span id="106" class="l"><a class="l" href="#106">106: </a>                <span class="php-var">$buffer</span> .= <span class="php-quote">&quot;\&quot;&quot;</span> . <span class="php-var">$columnData</span>[<span class="php-quote">&quot;column_name&quot;</span>] . <span class="php-quote">&quot;\&quot;=&gt;\&quot;\&quot;&quot;</span>;
+</span><span id="106" class="l"><a class="l" href="#106">106: </a>                <span class="php-var">$buffer</span> .= <span class="php-quote">&quot;\&quot;&quot;</span> . <span class="php-var">$columnData</span>[<span class="php-quote">&quot;column_name&quot;</span>] . <span class="php-quote">&quot;\&quot;=&gt; \Edify\Database\Model::__UNDEFINED__&quot;</span>;
 </span><span id="107" class="l"><a class="l" href="#107">107: </a>                <span class="php-keyword1">if</span> (<span class="php-var">$max</span> != <span class="php-var">$index</span>) {
 </span><span id="108" class="l"><a class="l" href="#108">108: </a>                    <span class="php-var">$buffer</span> .=<span class="php-quote">&quot;, \n\t\t&quot;</span>;
 </span><span id="109" class="l"><a class="l" href="#109">109: </a>                }
@@ -211,20 +212,21 @@
 </span><span id="116" class="l"><a class="l" href="#116">116: </a>            <span class="php-var">$filename</span> = <span class="php-var">$this</span>-&gt;destinationPath . <span class="php-quote">&quot;/&quot;</span> . <span class="php-var">$properties</span>[<span class="php-quote">&quot;schema_name&quot;</span>] . <span class="php-quote">&quot;/&quot;</span> . <span class="php-var">$class</span> . <span class="php-quote">&quot;.php&quot;</span>;
 </span><span id="117" class="l"><a class="l" href="#117">117: </a>
 </span><span id="118" class="l"><a class="l" href="#118">118: </a>            \Edify\Utils\<span class="php-keyword2">Log</span>::debugLog(<span class="php-quote">&quot;[Edify\Database\Extractor]&quot;</span>, <span class="php-quote">&quot;Saving class </span><span class="php-var">$class</span><span class="php-quote"> to </span><span class="php-var">$filename</span><span class="php-quote">&quot;</span>);
-</span><span id="119" class="l"><a class="l" href="#119">119: </a>            <span class="php-keyword1">if</span> (!@<span class="php-keyword2">mkdir</span>(<span class="php-keyword2">dirname</span>(<span class="php-var">$filename</span>), <span class="php-num">0770</span>, <span class="php-keyword1">true</span>)) {
-</span><span id="120" class="l"><a class="l" href="#120">120: </a>                \Edify\Utils\<span class="php-keyword2">Log</span>::debugLog(<span class="php-quote">&quot;[Edify\Database\Extractor]&quot;</span>, <span class="php-quote">&quot;Failed to create directory &quot;</span> . <span class="php-keyword2">dirname</span>(<span class="php-var">$filename</span>));
-</span><span id="121" class="l"><a class="l" href="#121">121: </a>            }
-</span><span id="122" class="l"><a class="l" href="#122">122: </a>
-</span><span id="123" class="l"><a class="l" href="#123">123: </a>            <span class="php-var">$filePointer</span> = <span class="php-keyword2">fopen</span>(<span class="php-var">$filename</span>, <span class="php-quote">&quot;w&quot;</span>);
-</span><span id="124" class="l"><a class="l" href="#124">124: </a>            <span class="php-keyword2">fwrite</span>(<span class="php-var">$filePointer</span>, <span class="php-var">$buffer</span>);
-</span><span id="125" class="l"><a class="l" href="#125">125: </a>            <span class="php-keyword2">fclose</span>(<span class="php-var">$filePointer</span>);
-</span><span id="126" class="l"><a class="l" href="#126">126: </a>            \Edify\Utils\<span class="php-keyword2">Log</span>::debugLog(<span class="php-quote">&quot;[Edify\Database\Extractor]&quot;</span>, <span class="php-quote">&quot;wrote </span><span class="php-var">$filename</span><span class="php-quote">&quot;</span>);
-</span><span id="127" class="l"><a class="l" href="#127">127: </a>        }
-</span><span id="128" class="l"><a class="l" href="#128">128: </a>    }
-</span><span id="129" class="l"><a class="l" href="#129">129: </a>
-</span><span id="130" class="l"><a class="l" href="#130">130: </a>}
-</span><span id="131" class="l"><a class="l" href="#131">131: </a>
-</span><span id="132" class="l"><a class="l" href="#132">132: </a></span><span class="xlang">?&gt;</span></code></pre>
+</span><span id="119" class="l"><a class="l" href="#119">119: </a>            <span class="php-var">$dirPath</span> = <span class="php-keyword2">dirname</span>(<span class="php-var">$filename</span>);
+</span><span id="120" class="l"><a class="l" href="#120">120: </a>            <span class="php-keyword1">if</span> (!(<span class="php-keyword2">file_exists</span>(<span class="php-var">$dirPath</span>) &amp;&amp; <span class="php-keyword2">is_dir</span>(<span class="php-var">$dirPath</span>)) &amp;&amp; !<span class="php-keyword2">mkdir</span>(<span class="php-var">$dirPath</span>, <span class="php-num">0770</span>, <span class="php-keyword1">true</span>)) {
+</span><span id="121" class="l"><a class="l" href="#121">121: </a>                \Edify\Utils\<span class="php-keyword2">Log</span>::debugLog(<span class="php-quote">&quot;[Edify\Database\Extractor]&quot;</span>, <span class="php-quote">&quot;Failed to create directory &quot;</span> . <span class="php-keyword2">dirname</span>(<span class="php-var">$filename</span>));
+</span><span id="122" class="l"><a class="l" href="#122">122: </a>            }
+</span><span id="123" class="l"><a class="l" href="#123">123: </a>
+</span><span id="124" class="l"><a class="l" href="#124">124: </a>            <span class="php-var">$filePointer</span> = <span class="php-keyword2">fopen</span>(<span class="php-var">$filename</span>, <span class="php-quote">&quot;w&quot;</span>);
+</span><span id="125" class="l"><a class="l" href="#125">125: </a>            <span class="php-keyword2">fwrite</span>(<span class="php-var">$filePointer</span>, <span class="php-var">$buffer</span>);
+</span><span id="126" class="l"><a class="l" href="#126">126: </a>            <span class="php-keyword2">fclose</span>(<span class="php-var">$filePointer</span>);
+</span><span id="127" class="l"><a class="l" href="#127">127: </a>            \Edify\Utils\<span class="php-keyword2">Log</span>::debugLog(<span class="php-quote">&quot;[Edify\Database\Extractor]&quot;</span>, <span class="php-quote">&quot;wrote </span><span class="php-var">$filename</span><span class="php-quote">&quot;</span>);
+</span><span id="128" class="l"><a class="l" href="#128">128: </a>        }
+</span><span id="129" class="l"><a class="l" href="#129">129: </a>    }
+</span><span id="130" class="l"><a class="l" href="#130">130: </a>
+</span><span id="131" class="l"><a class="l" href="#131">131: </a>}
+</span><span id="132" class="l"><a class="l" href="#132">132: </a>
+</span><span id="133" class="l"><a class="l" href="#133">133: </a></span><span class="xlang">?&gt;</span></code></pre>
 
 	<div id="footer">
 		Edify API documentation generated by <a href="http://apigen.org">ApiGen 2.8.0</a>

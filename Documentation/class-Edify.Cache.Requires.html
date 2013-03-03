@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta name="generator" content="ApiGen 2.8.0" />
 
-	<title>Class Edify\Cache\Statics | Edify</title>
+	<title>Class Edify\Cache\Requires | Edify</title>
 
 	<script type="text/javascript" src="resources/combined.js?2021650611"></script>
 	<script type="text/javascript" src="elementlist.js?3539360223"></script>
@@ -46,8 +46,8 @@
 			<ul>
 				<li><a href="class-Edify.Cache.Dynamic.html">Dynamic</a></li>
 				<li><a href="class-Edify.Cache.Factory.html">Factory</a></li>
-				<li><a href="class-Edify.Cache.Requires.html">Requires</a></li>
-				<li class="active"><a href="class-Edify.Cache.Statics.html">Statics</a></li>
+				<li class="active"><a href="class-Edify.Cache.Requires.html">Requires</a></li>
+				<li><a href="class-Edify.Cache.Statics.html">Statics</a></li>
 			</ul>
 
 
@@ -93,13 +93,14 @@
 	</div>
 
 <div id="content" class="class">
-	<h1>Class Statics</h1>
+	<h1>Class Requires</h1>
 
 
 	<div class="description">
 	
-<p>The Statics driver will return a list of cached buffers if the files are in
-the statics cache directory.</p>
+<p>The Requires driver extends the same functionality as the STATICS class it
+will only overwrite the load function as it will require the file instead of
+putting it in a buffer.</p>
 
 	</div>
 
@@ -122,7 +123,7 @@ the statics cache directory.</p>
 href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programmers.net</a>&gt;<br />
 				<b>Licence:</b>
 				FreeTard<br />
-		<b>Located at</b> <a href="source-class-Edify.Cache.Statics.html#5-80" title="Go to source code">Cache/Statics.php</a><br />
+		<b>Located at</b> <a href="source-class-Edify.Cache.Requires.html#5-74" title="Go to source code">Cache/Requires.php</a><br />
 	</div>
 
 
@@ -140,7 +141,7 @@ href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programme
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Edify.Cache.Statics.html#16-27" title="Go to source code">__construct</a>( <span><code><a href="class-Edify.Cache.Factory.html">Edify\Cache\Factory</a></code> <var>$parentFactory</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Requires.html#17-28" title="Go to source code">__construct</a>( <span><code><a href="class-Edify.Cache.Factory.html">Edify\Cache\Factory</a></code> <var>$parentFactory</var></span> )</code>
 
 		<div class="description short">
 			
@@ -186,7 +187,7 @@ file.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-Edify.Cache.Statics.html#29-59" title="Go to source code">load</a>( <span>Array <var>$parameters</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Requires.html#30-55" title="Go to source code">load</a>( <span>Array <var>$parameters</var></span> )</code>
 
 		<div class="description short">
 			
@@ -232,7 +233,7 @@ buffers to load );</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-Edify.Cache.Statics.html#62-78" title="Go to source code">save</a>( <span>String <var>$parameters</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Requires.html#58-73" title="Go to source code">save</a>( <span>String <var>$parameters</var></span> )</code>
 
 		<div class="description short">
 			
@@ -286,7 +287,7 @@ href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programme
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Edify.Cache.Statics.html#14" title="Go to source code"><var>$parentFactory</var></a>
+				<a href="source-class-Edify.Cache.Requires.html#15" title="Go to source code"><var>$parentFactory</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">null</span></code></td>
 		<td class="description"><div>

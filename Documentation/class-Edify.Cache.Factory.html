@@ -7,7 +7,7 @@
 	<title>Class Edify\Cache\Factory | Edify</title>
 
 	<script type="text/javascript" src="resources/combined.js?2021650611"></script>
-	<script type="text/javascript" src="elementlist.js?2183828106"></script>
+	<script type="text/javascript" src="elementlist.js?3539360223"></script>
 	<link rel="stylesheet" type="text/css" media="all" href="resources/style.css?3505392360" />
 
 </head>
@@ -46,6 +46,7 @@
 			<ul>
 				<li><a href="class-Edify.Cache.Dynamic.html">Dynamic</a></li>
 				<li class="active"><a href="class-Edify.Cache.Factory.html">Factory</a></li>
+				<li><a href="class-Edify.Cache.Requires.html">Requires</a></li>
 				<li><a href="class-Edify.Cache.Statics.html">Statics</a></li>
 			</ul>
 
@@ -139,7 +140,7 @@ href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programme
 				<a
 href="http://php-programmers/licences/Freetard">http://php-programmers/licences/Freetard</a>
 FreeTard licence<br />
-		<b>Located at</b> <a href="source-class-Edify.Cache.Factory.html#5-124" title="Go to source code">Cache/Factory.php</a><br />
+		<b>Located at</b> <a href="source-class-Edify.Cache.Factory.html#5-130" title="Go to source code">Cache/Factory.php</a><br />
 	</div>
 
 
@@ -157,7 +158,7 @@ FreeTard licence<br />
 
 		<td class="name"><div>
 		<a class="anchor" href="#___construct">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#38-61" title="Go to source code">__construct</a>( <span>String <var>$driver</var></span>, <span>String <var>$cachePath</var></span>, <span>String <var>$cachingLanguage</var> = <span class="php-quote">'EN'</span></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#42-65" title="Go to source code">__construct</a>( <span>String <var>$driver</var></span>, <span>String <var>$cachePath</var></span>, <span>String <var>$cachingLanguage</var> = <span class="php-quote">'EN'</span></span> )</code>
 
 		<div class="description short">
 			
@@ -210,7 +211,7 @@ href="mailto:irishado&#64;php-programmers.net">irishado&#64;<!---->php-programme
 
 		<td class="name"><div>
 		<a class="anchor" href="#_load">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#63-74" title="Go to source code">load</a>( <span>Array <var>$parameters</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#67-78" title="Go to source code">load</a>( <span>Array <var>$parameters</var></span> )</code>
 
 		<div class="description short">
 			
@@ -255,7 +256,7 @@ specified in each driver.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_loadFile">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#76-83" title="Go to source code">loadFile</a>( <span>String <var>$path</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#80-87" title="Go to source code">loadFile</a>( <span>String <var>$path</var></span> )</code>
 
 		<div class="description short">
 			
@@ -297,7 +298,7 @@ specified in each driver.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_save">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#85-96" title="Go to source code">save</a>( <span>Array <var>$parameters</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#89-100" title="Go to source code">save</a>( <span>Array <var>$parameters</var></span> )</code>
 
 		<div class="description short">
 			
@@ -342,7 +343,7 @@ specified in each driver.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_saveFile">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#99-109" title="Go to source code">saveFile</a>( <span>String <var>$path</var></span>, <span>String <var>$buffer</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#103-115" title="Go to source code">saveFile</a>( <span>String <var>$path</var></span>, <span>String <var>$buffer</var></span> )</code>
 
 		<div class="description short">
 			
@@ -382,7 +383,7 @@ specified in each driver.</p>
 
 		<td class="name"><div>
 		<a class="anchor" href="#_getFileName">#</a>
-		<code><a href="source-class-Edify.Cache.Factory.html#111-122" title="Go to source code">getFileName</a>( <span>String <var>$type</var></span>, <span>String <var>$UniqueFileId</var></span> )</code>
+		<code><a href="source-class-Edify.Cache.Factory.html#117-128" title="Go to source code">getFileName</a>( <span>String <var>$type</var></span>, <span>String <var>$UniqueFileId</var></span> )</code>
 
 		<div class="description short">
 			
@@ -478,6 +479,32 @@ different language.</p>
 			</div>
 		</div></td>
 	</tr>
+	<tr data-order="REQUIRES" id="REQUIRES">
+
+		<td class="attributes"><code>string</code></td>
+		<td class="name"><code>
+				<a href="source-class-Edify.Cache.Factory.html#34-37" title="Go to source code"><b>REQUIRES</b></a>
+		</code></td>
+		<td class="value"><code><span class="php-quote">&quot;\\Edify\\Cache\\Requires&quot;</span></code></td>
+		<td class="description"><div>
+			<a href="#REQUIRES" class="anchor">#</a>
+
+			<div class="description short">
+				
+<p>define the constant Requires so that Intellisense will pick up the
+string.</p>
+
+			</div>
+
+			<div class="description detailed hidden">
+				
+<p>define the constant Requires so that Intellisense will pick up the
+string.</p>
+
+
+			</div>
+		</div></td>
+	</tr>
 	</table>
 
 
@@ -492,7 +519,7 @@ different language.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Edify.Cache.Factory.html#35" title="Go to source code"><var>$driver</var></a>
+				<a href="source-class-Edify.Cache.Factory.html#39" title="Go to source code"><var>$driver</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">null</span></code></td>
 		<td class="description"><div>
@@ -515,7 +542,7 @@ different language.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Edify.Cache.Factory.html#36" title="Go to source code"><var>$language</var></a>
+				<a href="source-class-Edify.Cache.Factory.html#40" title="Go to source code"><var>$language</var></a>
 		</td>
 		<td class="value"><code><span class="php-quote">'EN'</span></code></td>
 		<td class="description"><div>
@@ -538,7 +565,7 @@ different language.</p>
 		</code></td>
 
 		<td class="name">
-				<a href="source-class-Edify.Cache.Factory.html#37" title="Go to source code"><var>$path</var></a>
+				<a href="source-class-Edify.Cache.Factory.html#41" title="Go to source code"><var>$path</var></a>
 		</td>
 		<td class="value"><code><span class="php-keyword1">null</span></code></td>
 		<td class="description"><div>
