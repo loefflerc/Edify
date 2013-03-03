@@ -21,7 +21,7 @@ class Server {
     CONST DBTYPE_DECIMAL   = 7;
     CONST DBTYPE_TEXT      = 8;
     CONST DBTYPE_SMALLTEXT = 9;
-    CONST DATETIME_SAVEFORMAT = "d-m-Y H:i:s";
+    CONST DATETIME_SAVEFORMAT = "Y-m-d H:i:s";
 
     private $driver = null;
 
@@ -88,8 +88,8 @@ class Server {
     function execute($parameters = Array()) {
         return $this->driver->execute($parameters);
     }
-    function getInsertIdStatement(){
-        return $this->driver->getInsertIdStatement();
+    function getInsertId(){
+        return $this->driver->getInsertId();
     }
 
     /**

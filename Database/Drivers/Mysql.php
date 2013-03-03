@@ -57,7 +57,7 @@ class Mysql {
             $columns = $this->connection->query("show columns in " . $tableRow[0]);
             foreach ($columns as $row) {
                 list($colType, $colPrecision, $colExtra) = $this->parentObject->examineColumnType($row["Type"]);
-                if(!isset($results[$tableRow[0]])){
+                if (!isset($results[$tableRow[0]])) {
                     $results[$tableRow[0]] = Array(
                         "schema_name" => $this->database,
                         "columns" => Array()
@@ -89,12 +89,13 @@ class Mysql {
     function getType() {
         return self::DRIVER_TYPE;
     }
+
     /**
      * prepare a SQL statement for execution
      * @param type $sql
      * @return PDOStatement
      */
-    function prepare($sql){
+    function prepare($sql) {
         return $this->connection->prepare($sql);
     }
 
@@ -103,16 +104,25 @@ class Mysql {
      * @param type $parameters
      * @return type
      */
-    function execute($parameters=Array()){
-        if(count($parameters)==0){
-           return $this->connection->execute();
-
+    function execute($parameters = Array()) {
+        if (count($parameters) == 0) {
+            return $this->connection->execute();
         }
         return $this->connection->execute($parameters);
     }
 
-    function getLockStatement(){return "";}
-    function getInsertIdStatement(){return "\nSELECT LAST_INSERT_ID() as scope_identifier";}
+    function getLockStatement() {
+        return "";
+    }
+
+    function getInsertId() {
+        try {
+            return $this->connection->lastInsertId();
+        } catch (PDOExecption $e) {
+            error_log($e->getMessage());
+        }
+    }
+
 }
 
 ?>

@@ -103,7 +103,7 @@ class $class extends \Edify\Database\Model {
     var \$properties   = Array(\n\t\t";
             $max = count($properties["columns"]) - 1;
             foreach ($properties["columns"] as $index => $columnData) {
-                $buffer .= "\"" . $columnData["column_name"] . "\"=>\"\"";
+                $buffer .= "\"" . $columnData["column_name"] . "\"=> \Edify\Database\Model::__UNDEFINED__";
                 if ($max != $index) {
                     $buffer .=", \n\t\t";
                 }
@@ -116,7 +116,8 @@ class $class extends \Edify\Database\Model {
             $filename = $this->destinationPath . "/" . $properties["schema_name"] . "/" . $class . ".php";
 
             \Edify\Utils\Log::debugLog("[Edify\Database\Extractor]", "Saving class $class to $filename");
-            if (!mkdir(dirname($filename), 0770, true)) {
+            $dirPath = dirname($filename);
+            if (!(file_exists($dirPath) && is_dir($dirPath)) && !mkdir($dirPath, 0770, true)) {
                 \Edify\Utils\Log::debugLog("[Edify\Database\Extractor]", "Failed to create directory " . dirname($filename));
             }
 

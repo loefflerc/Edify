@@ -34,7 +34,7 @@ class Model {
 
 	public function __set($key, $value) {
 		if (!isset($this->properties[$key])) {
-			\Edify\Utils\Log::debugLog("[Edify\Database\Model]", "Attempting to set a non existant key [$key] with the value [$value] on $this->tableName");
+            \Edify\Utils\Log::debugLog("[Edify\Database\Model]", "Attempting to set a non existant key [$key] with the value [" . print_R($value,true) . "] on $this->tableName");
 		} else {
 			if (!is_null($value)) {
 				$this->properties[$key] = $value;

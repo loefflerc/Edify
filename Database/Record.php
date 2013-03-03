@@ -1,4 +1,5 @@
 <?php
+
 /** A class to replace all of the CRUD functions for a specific database
  * 
  */
@@ -32,7 +33,7 @@ class Record {
     private $dbObject = null;
 
     /**
-     *
+     * constructor takes model name & database object to work on.
      * @param type $model
      */
     function __construct($model, $dbObject) {
@@ -61,10 +62,10 @@ class Record {
      * @param Boolean $cache
      * @return \Edify\Controller\model
      */
-    function execute($Statement, $parameters = Array(),$fetchType = \PDO::FETCH_CLASS) {
+    function execute($Statement, $parameters = Array(), $fetchType = \PDO::FETCH_CLASS) {
         //\Edify\Utils\Log::debugLog("[".$this->logHandle."]", print_R($parameters, true));
         $Statement->execute($parameters);
-        if($fetchType == \PDO::FETCH_CLASS){
+        if ($fetchType == \PDO::FETCH_CLASS) {
             return $Statement->fetchAll($fetchType, $this->model);
         } else {
             return $Statement->fetchAll($fetchType);
@@ -72,7 +73,7 @@ class Record {
     }
 
     /**
-     * 
+     * select a recrod based on the fields supplied.
      * @param Array  List of paramaters 
      * @param Integer $limit
      * @param String $orderby
@@ -92,11 +93,15 @@ class Record {
         if ($orderby != "") {
             $sql .= " order by $orderby";
         }
-        error_log($sql);
         $pdoStatement = $this->dbObject->prepare($sql);
         return $this->execute($pdoStatement, $parameters);
     }
-
+    /**
+     * save a list of objects for this record type.
+     *
+     * @param type $list
+     * @return type
+     */
     function saveList($list) {
         if (is_array($list)) {
             foreach ($list as $index => $record) {
@@ -106,6 +111,11 @@ class Record {
         return $list;
     }
 
+    /**
+     * Save an object back to the database
+     * @param Object $obj this is a database Model object that represents data in a record
+     * @return Object return the supplied object insert make primary key have value.
+     */
     function save($obj) {
         \Edify\Utils\Log::debugLog("[" . $this->logHandle . "]", "attempting to save object [" . $this->databaseName . "." . $obj->tableName . " => $this->model] ");
         if (is_object($obj)) {
@@ -117,6 +127,11 @@ class Record {
         }
     }
 
+    /**
+     * Delete a record of this type by its id
+     * @param type $mixed
+     * @return boolean
+     */
     function delete($mixed) {
         if ($this->primaryKey == "" || is_null($this->primaryKey)) {
             return false;
@@ -126,42 +141,39 @@ class Record {
         } else {
             $uniqueId = $mixed;
         }
-        execute_query("delete from " . $this->tableName . " where $this->primaryKey = $uniqueId", $this->databaseName);
+        $pdoStatement = $this->dbObject->prepare("delete from " . $this->tableName . " where $this->primaryKey = :uniqueId");
+        $pdoStatement->execute(Array(":uniqueId" => $uniqueId));
         return true;
     }
-
+    /**
+     * take an object and insert it into a table then extract the primary key
+     * and update the record.  return the object with its new id.
+     * @param type $obj
+     * @return type
+     */
     private function insert($obj) {
         $sql = "insert into " . $this->tableName . " (" . implode(", ", $this->insertKeys) . ") values (" . implode(", ", $this->insertValues) . ");";
-        if ($this->primaryKey == "" || is_null($this->primaryKey)) {
-            
-        } else {
-            $sql .= $this->dbObject->getInsertIdStatement();
-        }
-        $pdoStatement  = $this->dbObject->prepare($sql);
-        $parameters = $this->prepareParameters($obj,$this->insertKeys);
-        $primaryKey = $this->primaryKey;
 
+        $pdoStatement = $this->dbObject->prepare($sql);
+        $parameters = $this->prepareParameters($obj, $this->insertKeys);
+        $primaryKey = $this->primaryKey;
         $results = $this->execute($pdoStatement, $parameters, \PDO::FETCH_ASSOC);
-        error_log($sql);
-        error_log(print_R($results,true));
-        exit();
-        // recordset zero , record zero, field
-        if (!is_null($results[0]["scope_identifier"])) {
-            $obj->$primaryKey = $results[0]["scope_identifier"];
-        } else {
-            $obj->$primaryKey = $results[0]["SCOPE_ID"];
+        if (!($this->primaryKey == "" || is_null($this->primaryKey))) {
+            $obj->$primaryKey = $this->dbObject->getInsertId();
         }
         \Edify\Utils\Log::debugLog("[model]", "Setting primary key after insert [$primaryKey] = [" . $obj->$primaryKey . "]");
 
         return $obj;
     }
-
+    /**
+     * update an existing record
+     * @param type $obj
+     * @return type
+     */
     private function update($obj) {
         $sql = "update " . $this->tableName . " set " . implode(",", $this->updateStatementList) . " where $this->primaryKey=:$this->primaryKey";
-
-        if ($sql) {
-         //   execute_query($sql, $this->databaseName);
-        }
+        $pdoStatement = $this->dbObject->prepare($sql);
+        $parameters = $this->prepareParameters($obj, $this->keys);
         return $obj;
     }
 
@@ -177,7 +189,6 @@ class Record {
         $parameters = Array();
         if (is_object($obj)) {
             foreach ($keys as $field) {
-
                 if (is_object($obj->$field) && get_class($obj->$field) . "" == "DateTime") {
                     $value = $obj->$field->format(\Edify\Database\Server::DATETIME_SAVEFORMAT);
                 } else {
@@ -199,9 +210,5 @@ class Record {
     }
 
 }
-
-
-
-
 
 ?>
