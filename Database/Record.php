@@ -174,6 +174,7 @@ class Record {
         $sql = "update " . $this->tableName . " set " . implode(",", $this->updateStatementList) . " where $this->primaryKey=:$this->primaryKey";
         $pdoStatement = $this->dbObject->prepare($sql);
         $parameters = $this->prepareParameters($obj, $this->keys);
+        $this->execute($pdoStatement,$parameters, \PDO::FETCH_ASSOC);
         return $obj;
     }
 
