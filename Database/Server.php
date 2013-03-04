@@ -83,11 +83,19 @@ class Server {
         return $this->driver->prepare($sql);
     }
     /**
-     *
+     * execute a sql statement against the database
+     * you should use prepared statements and execute against
+     * them instead of using this function as Prepared statements
+     * protect you against SQL injection.
      */
     function execute($parameters = Array()) {
         return $this->driver->execute($parameters);
     }
+    /**
+     * execute the drivers getInsertId statement
+     *
+     * @return type
+     */
     function getInsertId(){
         return $this->driver->getInsertId();
     }
