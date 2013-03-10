@@ -5,7 +5,9 @@
  */
 
 namespace Edify\Utils;
-
+if (!defined("ACCESS_LOG_PATH")){
+    define("ACCESS_LOG_PATH", "/tmp/site.access.log");
+}
 /** Define the Log class
  * 
  * This allows you to log information into the error_log file
@@ -61,14 +63,13 @@ class Log {
     static function debugLog($handle, $statement) {
         if (
         // if debug is ALL then write message to error_log file
-            self::$debugLevel == "ALL"
-            ||
-            in_array(
-                // strip the square brackets off the handle
-                str_replace(Array("[", "]"), Array("", ""), $handle),
-                // and check it in not in this array of handles
-                explode(",", self::$debugLevel . ",")
-            )
+                self::$debugLevel == "ALL" ||
+                in_array(
+                        // strip the square brackets off the handle
+                        str_replace(Array("[", "]"), Array("", ""), $handle),
+                        // and check it in not in this array of handles
+                        explode(",", self::$debugLevel . ",")
+                )
         ) {
             // write to the error_log rather than the screen to keep information secure
             error_log("$handle: $statement\n");
@@ -84,6 +85,10 @@ class Log {
      */
     static function debugError($handle, $statement) {
         error_log("$handle: $statement\n");
+    }
+
+    function access_log($msg) {
+        error_log("$msg\r\n", 3, ACCESS_LOG_PATH);
     }
 
 }
