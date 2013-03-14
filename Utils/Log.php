@@ -87,7 +87,7 @@ class Log {
         error_log("$handle: $statement\n");
     }
 
-    function access_log($msg) {
+    static function access_log($msg) {
         error_log("$msg\r\n", 3, ACCESS_LOG_PATH);
     }
 
