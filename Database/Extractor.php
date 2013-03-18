@@ -111,8 +111,6 @@ class $class extends \Edify\Database\Model {
             $buffer .="\n\t);
 }
 ?>";
-            print $buffer;
-
             $filename = $this->destinationPath . "/" . $properties["schema_name"] . "/" . $class . ".php";
 
             \Edify\Utils\Log::debugLog("[Edify\Database\Extractor]", "Saving class $class to $filename");
