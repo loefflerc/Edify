@@ -17,6 +17,8 @@ class Sanitise {
     /**
      * Is the parameter a natural number
      *
+     * A natural number is a whole number an Integer
+     *
      * @param type $val
      * @param type $acceptzero
      * @return boolean
