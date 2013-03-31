@@ -81,12 +81,14 @@ class Record {
      * @return type
      */
     function select($parameters = Array(), $orderby = "") {
+        $sqlParameters = Array();
         $sql = "select ";
         $sql .= implode(", ", $this->keys);
         $sql .= " from " . $this->tableName . " " . $this->dbObject->getLockStatement() . " where ";
         foreach ($parameters as $key => $value) {
             if (in_array($key, $this->keys)) {
                 $sql .= $key . " = :$key and ";
+                $sqlParameters[":$key"] = $value;
             }
         }
         $sql .= " 1=1 ";
@@ -94,7 +96,7 @@ class Record {
             $sql .= " order by $orderby";
         }
         $pdoStatement = $this->dbObject->prepare($sql);
-        return $this->execute($pdoStatement, $parameters);
+        return $this->execute($pdoStatement, $sqlParameters);
     }
     /**
      * save a list of objects for this record type.
