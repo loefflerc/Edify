@@ -15,14 +15,14 @@ educate
 Introduction
 -----
 
-Edify is an educational project created by the PHP Programmers community, but is not limited to only its members. Anyone are free to contribute in any way. The idea is learning by doing. This project is ment to be for educational purposes only, and does not have any intentions of being a competitor to any other existing framework or library.
+Edify is an educational project created by the PHP Programmers community, but is not limited to only its members. Anyone is free to contribute in any way. The idea is learning by doing. This project is meant to be for educational purposes only, and does not have any intentions of being a competitor to any other existing framework or library.
 
-We hope that this project can help bringing the community even closer together through collaboration. Who knows. Maybe we even see people directly collaborating on packages and new friendships being formed? That would be awsome :)
+We hope that this project can help bringing the community even closer together through collaboration. Who knows. Maybe we even see people directly collaborating on packages and new friendships being formed? That would be awesome :)
 
 Contributions
 ------
 
-The project is still in an early planning phase, so contributions to this process, such as package ideas, improvements to the readme, etc, is greatly appreciated, but pull requests containing packages will not be accepted at this point. A few packages will be made by the core development team first. This way we ensure that people fully understand the structure of the project, and you won't have to keep refactoring your code.
+The project is still in an early planning phase, so contributions to this process, such as package ideas, improvements to the readme, etc, are greatly appreciated, but pull requests containing packages will not be accepted at this point. A few packages will be made by the core development team first. This way we ensure that people fully understand the structure of the project, and you won't have to keep refactoring your code.
 
 Description
 -----
